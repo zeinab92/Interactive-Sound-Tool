@@ -1,0 +1,133 @@
+.wrapper {
+    background: #f0f0f0;
+    width: 790px;
+    height: 500px;
+    margin: 55px auto 0;
+    position: relative;
+    background: url(/assets/images/Background.png);
+}
+
+.inner-wrapper {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+}
+
+#outer-dropzone {
+    height: 100px;
+    width: 100px;
+    margin-top: 115px;
+    border-radius: 50%;
+}
+
+/*
+#inner-dropzone {
+    height: 80px;
+    border: 2px solid #ffb6b6;
+}
+*/
+
+.dropzone {
+/*     border: dashed 4px transparent; */
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    transition: background-color 0.3s;
+    font-size: 14px
+}
+
+.drop-active {
+    border-color: #aaa;
+}
+
+#outer-dropzone.drop-target {
+    background-color: rgba(255, 0, 0, 0.25);
+}
+
+.drop-target {
+    border-color: #fff;
+    border-style: solid;
+}
+
+.drag-drop {
+    display: inline-block;
+    height: 115px;
+    width: 115px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #fff;
+    background-color: #29e;
+    border: solid 2px #fff;
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    transition: background-color 0.3s, opacity 1s;
+}
+
+.drag-drop.can-drop {
+    color: #000;
+    background-color: #4e4;
+}
+
+.box {
+    margin: 2.5em auto 0;
+    width: 9em;
+    height: 9em;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% -5em;
+    position: relative;
+    transform: rotateX(-10deg);
+    -webkit-transition: all 1s;
+    /* Safari */
+    transition: all 1s;
+}
+
+.box div {
+    position: absolute;
+    width: 9em;
+    height: 9em;
+    background-color: #4c4c4c;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.boxCorner2 {
+    transform: rotateX(180deg) translateZ(9em);
+}
+
+.boxCorner1::before,
+.boxCorner1::after,
+.boxCorner2::before,
+.boxCorner2::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.boxCorner1::before,
+.boxCorner2::before {
+    transform: rotateY(80deg);
+    transform-origin: 0 50%;
+    background-color: #969696;
+}
+
+.boxCorner2::before {
+    transform-origin: 100% 50%;
+    transform: rotateY(-90deg);
+}
+
+.boxCorner1::after,
+.boxCorner2::after {
+    transform: rotateX(-90deg);
+    transform-origin: 50% 0;
+    background-color: #969696;
+}
