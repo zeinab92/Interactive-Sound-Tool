@@ -92,6 +92,7 @@
              volume: 0.1
          }, 1000);
          $(".box").css("margin-top", "215px");
+         $(".box-shadow").addClass("drop");
          setTimeout(function () {
              $("#yes-drop").css("opacity", 0);
              document.getElementById('myAudio').pause();
@@ -101,6 +102,7 @@
          setTimeout(function () {
              $(".box").css("margin-top", "2.5em");
              $("#yes-drop").css("transform", "translate(12px, 5px)");
+         $(".box-shadow").removeClass("drop");
              $("#myAudio").animate({
                  volume: 1
              }, 1000);
