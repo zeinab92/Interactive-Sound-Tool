@@ -1,4 +1,9 @@
- // target elements with the "draggable" class
+$(".click").click(function(){
+    $(".ribbon").addClass("expand");
+}); 
+
+
+// target elements with the "draggable" class
  interact('.draggable')
      .draggable({
          // enable inertial throwing

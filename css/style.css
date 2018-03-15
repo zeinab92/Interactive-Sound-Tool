@@ -120,3 +120,34 @@
 .box-shadow.drop::after {
     background-color: rgba(0,0,0,0.55);
 }
+
+.ribbon {
+    position: relative;
+    top: 25px;
+    left: 25px;
+    background: rgba(26, 26, 26, 1);
+    width: 150px;
+    height: 40px;
+    transition: width 1s;
+    -webkit-transition: width 1s;
+}
+
+.ribbon::after {
+    content: '';
+    position: absolute;
+    background: #4c4c4c;
+    top: -2px;
+    left: 0px;
+    z-index: -1;
+    height: 140%;
+    transform-style: preserve-3d;
+    transform: rotateX(45deg) rotateY(18deg);
+/*    width: 0;*/
+    width: 40%;
+    transition: width 1s;
+    -webkit-transition: width 1s;
+}
+
+.ribbon.expand::after {
+/*    width: 40%;*/
+}
