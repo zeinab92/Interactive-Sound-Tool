@@ -81,7 +81,7 @@
     -webkit-transition: all 1s;
     width: 257px;
     background-color: #4c4c4c;
-    background: url(assets/images/BOX.png);
+    background: url(/assets/images/BOX.png);
     backface-visibility: hidden;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .box::after {
-    background: url(assets/images/FLAT-TOP.png);
+    background: url(/assets/images/FLAT-TOP.png);
     background-size: cover;
     width: 96%;
     left: 2%;
