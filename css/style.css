@@ -5,10 +5,10 @@
 
 .wrapper {
     background: url(../assets/images/Background.png);
-    height: 500px;
-    margin: 55px auto 0;
+    height: 805px;
+    margin: 25px auto 0;
     position: relative;
-    width: 790px;
+    width: 664px;
 }
 
 .inner-wrapper {
@@ -21,26 +21,21 @@
 
 #outer-dropzone {
     border-radius: 50%;
-    height: 100px;
-    margin-top: 115px;
-    width: 100px;
+    height: 80px;
+    margin-top: 422px;
+    width: 80px;
 }
 
 .dropzone {
-    border-radius: 4px;
     font-size: 14px;
-    margin: 10px auto 30px;
+    margin: auto;
     padding: 10px;
     transition: background-color 0.3s;
 }
 
-.drop-active {
-    border-color: #aaa;
-}
+.drop-active { border-color: #aaa; }
 
-#outer-dropzone.drop-target {
-    background-color: rgba(255, 0, 0, 0.25);
-}
+#outer-dropzone.drop-target { background-color: rgba(255, 0, 0, 0.25); }
 
 .drop-target {
     border-color: #fff;
@@ -49,14 +44,19 @@
 
 .drag-drop {
     height: 115px;
-    left: 12px;
+    left: 22%;
     position: absolute;
-    width: 115px;
-    top: 12px;
+    bottom: 4%;
     transform: translate(0px, 0px);
     -webkit-transform: translate(0px, 0px);
     transition: opacity 1s;
+    width: 93px;
+    height: 93px;
 }
+
+.drag-drop.crowd-icon { margin-left: 140px; }
+
+.drag-drop.tractor-icon { margin-left: 280px; }
 
 .box-wrapper, .box-shadow-wrapper {
     left: 0;
@@ -64,26 +64,29 @@
     perspective: 800px;
     position: absolute;
     right: 0;
-    width: 14em;
+    width: 260px;
     z-index: 99;
 }
 
-.box-shadow-wrapper {
-    z-index: 0;
-}
+.box-shadow-wrapper { z-index: 0; }
 
 .box, .box-shadow {
-    height: 9em;
-    margin: 2.5em auto 0;
+    height: 229px;
+    margin: 50% auto 0;
     position: relative;
     transform-style: preserve-3d;
     transform-origin: 50% 50% -5em;
-    transform: rotateX(-10deg);
+    transform: rotateX(-5deg);
     transition: all 1s;
     -webkit-transition: all 1s;
-    width: 9em;
+    width: 257px;
     background-color: #4c4c4c;
+    background: url(/assets/images/BOX.png);
     backface-visibility: hidden;
+}
+
+.box.drop {
+    margin-top: 125%;
 }
 
 .box::after, .box-shadow::after {
@@ -98,56 +101,107 @@
     transform-origin: 50% 0;
 }
 
+.box::after {
+    background: url(/assets/images/FLAT-TOP.png);
+    background-size: cover;
+    width: 96%;
+    left: 2%;
+    top: 3%;
+}
+
 .box-shadow {
-    margin-top: 23em;
+    margin-top: 212%;
     background: transparent;
-    width: 14em;
-    height: 17em;
+    width: 18em;
+    margin-left: -1em;
+    height: 12em;
 }
 
 .box-shadow::after {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.15);
     transition: all 1s;
     -webkit-transition: all 1s;
 }
 
 .box-shadow.drop {
-    width: 8.5em;
-    height: 6.5em;
-    margin-top: 22em;
+    width: 13em;
+    height: 8em;
+    margin-left: 1.7em;
+    margin-top: 206%;
 }
 
-.box-shadow.drop::after {
-    background-color: rgba(0,0,0,0.55);
+.box-shadow.drop::after { background-color: rgba(0,0,0,0.55); }
+
+.ribbon-wrapper {
+    position: absolute;
+    top: 30%;
+    right: 22.3%;
+    z-index: 99;
 }
 
 .ribbon {
     position: relative;
     top: 25px;
     left: 25px;
-    background: rgba(26, 26, 26, 1);
     width: 150px;
     height: 40px;
-    transition: width 1s;
-    -webkit-transition: width 1s;
+    color: #fff;
 }
+
+.ribbon .parent-span {
+    position: absolute;
+    z-index: 99999;
+    font-size: 25px;
+    width: 100%;
+    letter-spacing: 0.5px;
+    height: 100%;
+    line-height: 39px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    opacity: 0;
+    font-weight: 600;
+}
+
+.ribbon span span {
+    font-weight: 400;
+}
+
+.ribbon.expand .parent-span {
+    opacity: 1;
+    transition: opacity 0.5s;
+    transition-delay: 0.5s;
+}
+
+.ribbon::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    background: rgba(26, 26, 26, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s linear 0.2s;
+}
+
+.ribbon.expand::before { width: 100%; }
 
 .ribbon::after {
     content: '';
     position: absolute;
     background: #4c4c4c;
-    top: -2px;
-    left: 0px;
+    top: -1.5px;
     z-index: -1;
-    height: 140%;
-    transform-style: preserve-3d;
-    transform: rotateX(45deg) rotateY(18deg);
-/*    width: 0;*/
-    width: 40%;
-    transition: width 1s;
-    -webkit-transition: width 1s;
+    right: 0;
+    height: 139%;
+    transform: rotateX(45deg) rotateY(18deg) scaleX(-1);
+    width: 0%;
+    margin-top: 7px;
+    margin-right: 91.5px;
+    transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
 }
 
 .ribbon.expand::after {
-/*    width: 40%;*/
+    width: 40%;
+    margin-top: 0px;
 }

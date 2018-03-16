@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Interactive Sound Tool</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 </head>
 
 <body>
@@ -15,20 +16,32 @@
         <div class="box-shadow-wrapper">
             <div class="box-shadow"></div>
         </div>
-        <audio id="myAudio" src="assets/sounds/Jazz.wav" loop></audio>
-        <div id="yes-drop" class="draggable drag-drop">
-            <img src="assets/images/ICON-Jazz.png" />
+        
+        <div id="yes-drop2" class="draggable drag-drop jackhammer-icon">
+            <img src="assets/images/JACKHAMMER.png" />
+            <audio id="myAudio" class="audio" src="assets/sounds/JACKHAMMER.mp3" loop></audio>
         </div>
+        <div id="yes-drop" class="draggable drag-drop crowd-icon">
+            <img src="assets/images/CROWD.png" />
+            <audio id="myAudio2" class="audio" src="assets/sounds/CROWD.mp3" loop></audio>
+        </div>
+        <div id="yes-drop3" class="draggable drag-drop tractor-icon">
+            <img src="assets/images/TRACTOR.png" />
+            <audio id="myAudio2" class="audio" src="assets/sounds/TRACTOR.mp3" loop></audio>
+        </div>
+        
         <div class="inner-wrapper">
             <div id="outer-dropzone" class="dropzone">
             </div>
         </div>
+
+        <div class="ribbon-wrapper">
+            <div class="ribbon">
+                <span class="parent-span">100.00 <span>dBA</span></span>
+            </div>
+        </div>
     </div>
-    
-    <div class="ribbon"></div>
-    <br><br><br><br><br><br>
-    <div class="click">CLICK ME!</div>
-    
+
     <script src='https://cdn.jsdelivr.net/npm/interactjs@1.3.3/dist/interact.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="js/index.js"></script>
