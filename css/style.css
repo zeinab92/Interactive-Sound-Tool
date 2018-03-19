@@ -137,6 +137,8 @@
     top: 30%;
     right: 22.3%;
     z-index: 99;
+    transition: all 1s;
+    -webkit-transition: all 1s;
 }
 
 .ribbon {
@@ -204,4 +206,8 @@
 .ribbon.expand::after {
     width: 40%;
     margin-top: 0px;
+}
+
+.ribbon-wrapper.drop {
+    top: 55%;
 }

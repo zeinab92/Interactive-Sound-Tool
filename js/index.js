@@ -27,6 +27,7 @@ interact('.draggable')
         // call this function on every dragend event
         onend: function (event) {
             $(".audio").trigger("pause");
+            $(".ribbon").removeClass("expand");
             var textEl = event.target.querySelector('p');
 
             textEl && (textEl.textContent =
@@ -98,6 +99,8 @@ interact('.dropzone').dropzone({
         }, 1000);
         $(".box").addClass("drop");
         $(".box-shadow").addClass("drop");
+        $(".ribbon-wrapper").addClass("drop");
+        $(".ribbon").addClass("expand");
         setTimeout(function () {
             $(".can-drop").css("opacity", 0);
             $(".audio").animate({
@@ -111,11 +114,13 @@ interact('.dropzone').dropzone({
             $(".box").removeClass("drop");
             $(".can-drop").css("transform", "");
             $(".box-shadow").removeClass("drop");
+            $(".ribbon-wrapper").removeClass("drop");
             $(".audio").animate({
                 volume: 1
             }, 1000);
         }, 6000);
         setTimeout(function () {
+            $(".ribbon").removeClass("expand");
             $(".can-drop").css("opacity", 1);
             $(".drag-drop").removeClass("can-drop");
         }, 6500);
