@@ -1,7 +1,20 @@
-//$(".click").click(function(){
-//    $(".ribbon").addClass("expand");
-//}); 
-
+//$(document).ready(function(){
+//	var number = 110.00;
+//	var counter;
+//
+//	var timer = function(){
+//		counter = setInterval(decrement, 100);
+//	}
+//
+//	var decrement = function(){
+//		// Just logging the results to make sure it works
+//		number--;
+//		$('.parent-span').html(number + '.00 <span>dBA</span>');
+//		if (number == 100){
+//			clearInterval(counter);
+//		}
+//	}
+//});
 
 // target elements with the "draggable" class
 interact('.draggable')
@@ -26,6 +39,7 @@ interact('.draggable')
         onmove: dragMoveListener,
         // call this function on every dragend event
         onend: function (event) {
+            event.target.classList.remove("dragging");
             $(".audio").trigger("pause");
             $(".ribbon").removeClass("expand");
             var textEl = event.target.querySelector('p');
@@ -55,6 +69,16 @@ function dragMoveListener(event) {
 
     target.children[1].play();
     $(".ribbon").addClass("expand");
+    target.classList.add("dragging");
+    if ($(".dragging").hasClass("jackhammer-icon")) {
+        $(".parent-span").html("96.00 <span>dBA</span>")
+    }
+    else if ($(".dragging").hasClass("crowd-icon")) {
+        $(".parent-span").html("110.00 <span>dBA</span>")
+    }
+    else if ($(".dragging").hasClass("tractor-icon")) {
+        $(".parent-span").html("102.00 <span>dBA</span>")
+    }
 }
 
 // this is used later in the resizing and gesture demos
@@ -93,6 +117,40 @@ interact('.dropzone').dropzone({
         }, 1000);
     },
     ondrop: function (event) {
+        var counter;
+        if (event.relatedTarget.classList.contains("jackhammer-icon")) {
+            var number = 96.00;
+            var decrement = function(){
+                // Just logging the results to make sure it works
+                number--;
+                $('.parent-span').html(number + '.00 <span>dBA</span>');
+                if (number == 86.00){
+                    clearInterval(counter);
+                }
+            }
+        }
+        if (event.relatedTarget.classList.contains("crowd-icon")) {
+            var number = 110.00;
+            var decrement = function(){
+                // Just logging the results to make sure it works
+                number--;
+                $('.parent-span').html(number + '.00 <span>dBA</span>');
+                if (number == 100){
+                    clearInterval(counter);
+                }
+            }
+        }
+        if (event.relatedTarget.classList.contains("tractor-icon")) {
+            var number = 102.00;
+            var decrement = function(){
+                // Just logging the results to make sure it works
+                number--;
+                $('.parent-span').html(number + '.00 <span>dBA</span>');
+                if (number == 92){
+                    clearInterval(counter);
+                }
+            }
+        }
         $(".can-drop audio").trigger("play");
         $(".audio").animate({
             volume: 0.1
@@ -101,6 +159,8 @@ interact('.dropzone').dropzone({
         $(".box-shadow").addClass("drop");
         $(".ribbon-wrapper").addClass("drop");
         $(".ribbon").addClass("expand");
+        $(".expand .parent-span").css("transition", "none");
+        counter = setInterval(decrement, 90);
         setTimeout(function () {
             $(".can-drop").css("opacity", 0);
             $(".audio").animate({
@@ -120,10 +180,15 @@ interact('.dropzone').dropzone({
             }, 1000);
         }, 6000);
         setTimeout(function () {
-            $(".ribbon").removeClass("expand");
+            $(".ribbon.expand").addClass("remove-expand");
             $(".can-drop").css("opacity", 1);
             $(".drag-drop").removeClass("can-drop");
         }, 6500);
+        setTimeout(function (){
+            $(".parent-span").css("transition", "opacity 0.5s linear 0.5s");
+            $(".ribbon.expand").removeClass("remove-expand");
+            $(".ribbon.expand").removeClass("expand");
+        }, 9000);
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
