@@ -53,13 +53,13 @@ function dragMoveListener(event) {
     $(".ribbon").addClass("expand");
     target.classList.add("dragging");
     if ($(".dragging").hasClass("jackhammer-icon")) {
-        $(".parent-span").html("96.00 <span>dBA</span>")
+        $(".parent-span").html("96.0 <span>dBA</span>")
     }
     else if ($(".dragging").hasClass("crowd-icon")) {
-        $(".parent-span").html("110.00 <span>dBA</span>")
+        $(".parent-span").html("110.0 <span>dBA</span>")
     }
     else if ($(".dragging").hasClass("tractor-icon")) {
-        $(".parent-span").html("102.00 <span>dBA</span>")
+        $(".parent-span").html("102.0 <span>dBA</span>")
     }
 }
 
@@ -105,7 +105,7 @@ interact('.dropzone').dropzone({
             var decrement = function(){
                 // Just logging the results to make sure it works
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(2) + ' <span>dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
                 if (number <= 86.1){
 //                    number--;
                     clearInterval(counter);
@@ -113,22 +113,22 @@ interact('.dropzone').dropzone({
             }
         }
         if (event.relatedTarget.classList.contains("crowd-icon")) {
-            var number = 110.00;
+            var number = 110.0;
             var decrement = function(){
                 // Just logging the results to make sure it works
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(2) + ' <span>dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
                 if (number <= 100.1){
                     clearInterval(counter);
                 }
             }
         }
         if (event.relatedTarget.classList.contains("tractor-icon")) {
-            var number = 102.00;
+            var number = 102.0;
             var decrement = function(){
                 // Just logging the results to make sure it works
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(2) + ' <span>dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
                 if (number <= 92.1){
                     clearInterval(counter);
                 }
