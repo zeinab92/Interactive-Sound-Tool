@@ -6,7 +6,7 @@
 .wrapper {
     background: url(../assets/images/Background.png);
     height: 805px;
-    margin: 25px auto 0;
+    margin: 0 auto;
     position: relative;
     width: 664px;
 }
@@ -21,25 +21,23 @@
 
 #outer-dropzone {
     border-radius: 50%;
-    height: 80px;
-    margin-top: 422px;
-    width: 80px;
+    height: 70px;
+    margin-top: 428px;
+    width: 70px;
 }
 
 .dropzone {
     font-size: 14px;
     margin: auto;
-    padding: 10px;
+    padding: 8px;
     transition: background-color 0.3s;
 }
 
 .drop-active { border-color: #aaa; }
 
-#outer-dropzone.drop-target { background-color: rgba(255, 0, 0, 0.25); }
-
-.drop-target {
-    border-color: #fff;
-    border-style: solid;
+#outer-dropzone.drop-target { 
+    box-shadow: 0px 0px 60px 15px #FFF;
+    transition: all 0.5s;
 }
 
 .drag-drop {
@@ -75,7 +73,22 @@
 }
 
 .drag-drop:hover::after {
-    box-shadow: 0px 0px 55px #FBCD33;
+    box-shadow: 0px 0px 55px 5px #FBCD33;
+}
+
+.dragging::after {
+    animation: flash 0.4s infinite;
+}
+
+@keyframes flash {
+    100% {box-shadow: 0px 0px 55px 5px #FBCD33;}
+    50% {box-shadow: 0px 0px 15px 2px #FBCD33;}
+    0% {box-shadow: 0px 0px 55px 5px #FBCD33;}
+}
+
+.dragging.can-drop::after {
+    animation: none!important;
+    box-shadow: 0!important;
 }
 
 .box-wrapper, .box-shadow-wrapper {
@@ -226,7 +239,6 @@
     height: 139%;
     transform: rotateX(45deg) rotateY(18deg) scaleX(-1);
     width: 0%;
-/*    width: 40%;*/
     margin-top: 7px;
     margin-right: 91.5px;
     transition: all 0.2s linear;
