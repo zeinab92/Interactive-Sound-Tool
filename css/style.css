@@ -58,6 +58,26 @@
 
 .drag-drop.tractor-icon { margin-left: 280px; }
 
+
+.drag-drop::after  {
+    content: '';
+    position: absolute;
+    width: 92%;
+    height: 92%;
+    top: 4px;
+    border-radius: 50%;
+    left: 5px;
+    transition: all 0.2s;
+}
+
+.drag-drop.tractor-icon::after {
+    left: 4px;
+}
+
+.drag-drop:hover::after {
+    box-shadow: 0px 0px 55px #FBCD33;
+}
+
 .box-wrapper, .box-shadow-wrapper {
     left: 0;
     margin: auto;
