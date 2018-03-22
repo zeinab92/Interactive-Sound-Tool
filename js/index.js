@@ -1,21 +1,3 @@
-//$(document).ready(function(){
-//	var number = 110.00;
-//	var counter;
-//
-//	var timer = function(){
-//		counter = setInterval(decrement, 100);
-//	}
-//
-//	var decrement = function(){
-//		// Just logging the results to make sure it works
-//		number--;
-//		$('.parent-span').html(number + '.00 <span>dBA</span>');
-//		if (number == 100){
-//			clearInterval(counter);
-//		}
-//	}
-//});
-
 // target elements with the "draggable" class
 interact('.draggable')
     .draggable({
@@ -119,12 +101,13 @@ interact('.dropzone').dropzone({
     ondrop: function (event) {
         var counter;
         if (event.relatedTarget.classList.contains("jackhammer-icon")) {
-            var number = 96.00;
+            var number = 96.0;
             var decrement = function(){
                 // Just logging the results to make sure it works
-                number--;
-                $('.parent-span').html(number + '.00 <span>dBA</span>');
-                if (number == 86.00){
+                number -= 0.1;
+                $('.parent-span').html(number.toFixed(2) + ' <span>dBA</span>');
+                if (number <= 86.1){
+//                    number--;
                     clearInterval(counter);
                 }
             }
@@ -133,9 +116,9 @@ interact('.dropzone').dropzone({
             var number = 110.00;
             var decrement = function(){
                 // Just logging the results to make sure it works
-                number--;
-                $('.parent-span').html(number + '.00 <span>dBA</span>');
-                if (number == 100){
+                number -= 0.1;
+                $('.parent-span').html(number.toFixed(2) + ' <span>dBA</span>');
+                if (number <= 100.1){
                     clearInterval(counter);
                 }
             }
@@ -144,9 +127,9 @@ interact('.dropzone').dropzone({
             var number = 102.00;
             var decrement = function(){
                 // Just logging the results to make sure it works
-                number--;
-                $('.parent-span').html(number + '.00 <span>dBA</span>');
-                if (number == 92){
+                number -= 0.1;
+                $('.parent-span').html(number.toFixed(2) + ' <span>dBA</span>');
+                if (number <= 92.1){
                     clearInterval(counter);
                 }
             }
@@ -160,7 +143,7 @@ interact('.dropzone').dropzone({
         $(".ribbon-wrapper").addClass("drop");
         $(".ribbon").addClass("expand");
         $(".expand .parent-span").css("transition", "none");
-        counter = setInterval(decrement, 90);
+        counter = setInterval(decrement, 8);
         setTimeout(function () {
             $(".can-drop").css("opacity", 0);
             $(".audio").animate({
