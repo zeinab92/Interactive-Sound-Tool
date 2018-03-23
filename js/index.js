@@ -3,6 +3,7 @@ interact('.draggable')
     .draggable({
         // enable inertial throwing
         inertia: true,
+        onmove: window.dragMoveListener,
         // keep the element within the area of it's parent
         restrict: {
             restriction: "parent",
@@ -24,13 +25,20 @@ interact('.draggable')
             event.target.classList.remove("dragging");
             $(".audio").trigger("pause");
             $(".ribbon").removeClass("expand");
-            var textEl = event.target.querySelector('p');
-
-            textEl && (textEl.textContent =
-                'moved a distance of ' +
-                (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                    Math.pow(event.pageY - event.y0, 2) | 0))
-                .toFixed(2) + 'px');
+            
+            if ($(".draggable").hasClass("can-drop")) {
+                //Don't snap icon back because it was dropped into drop zone
+            }
+            else {
+                //Snap icon back to original position
+                $(".draggable").removeAttr('data-x');
+                $(".draggable").removeAttr('data-y');
+                $(".draggable").css('transform', 'none');
+                $(".draggable").css('transition', 'all 1s');
+                setTimeout(function () {
+                    $(".draggable").css('transition', 'opacity 1s');
+                }, 1200);
+            }
         }
     });
 
@@ -73,8 +81,8 @@ interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
     accept: '.drag-drop',
 
-    // Require a 75% element overlap for a drop to be possible
-    overlap: 0.60,
+    // Require a 30% element overlap for a drop to be possible
+    overlap: 0.30,
 
     // listen for drop related events:
 
@@ -103,11 +111,9 @@ interact('.dropzone').dropzone({
         if (event.relatedTarget.classList.contains("jackhammer-icon")) {
             var number = 96.0;
             var decrement = function(){
-                // Just logging the results to make sure it works
                 number -= 0.1;
                 $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
                 if (number <= 86.1){
-//                    number--;
                     clearInterval(counter);
                 }
             }
@@ -115,7 +121,6 @@ interact('.dropzone').dropzone({
         if (event.relatedTarget.classList.contains("crowd-icon")) {
             var number = 110.0;
             var decrement = function(){
-                // Just logging the results to make sure it works
                 number -= 0.1;
                 $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
                 if (number <= 100.1){
@@ -126,7 +131,6 @@ interact('.dropzone').dropzone({
         if (event.relatedTarget.classList.contains("tractor-icon")) {
             var number = 102.0;
             var decrement = function(){
-                // Just logging the results to make sure it works
                 number -= 0.1;
                 $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
                 if (number <= 92.1){
@@ -138,6 +142,7 @@ interact('.dropzone').dropzone({
         $(".audio").animate({
             volume: 0.1
         }, 1000);
+        $(".can-drop").addClass("dropped");
         $(".box").addClass("drop");
         $(".box-shadow").addClass("drop");
         $(".ribbon-wrapper").addClass("drop");
@@ -145,6 +150,7 @@ interact('.dropzone').dropzone({
         $(".expand .parent-span").css("transition", "none");
         counter = setInterval(decrement, 8);
         setTimeout(function () {
+            $(".can-drop").removeClass("dropped");
             $(".can-drop").css("opacity", 0);
             $(".audio").animate({
                 volume: 0

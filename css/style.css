@@ -5,10 +5,11 @@
 
 .wrapper {
     background: url(../assets/images/Background.png);
+/*    background-size: cover;*/
     height: 805px;
     margin: 0 auto;
     position: relative;
-    width: 664px;
+    width: 665px;
 }
 
 .inner-wrapper {
@@ -36,7 +37,7 @@
 .drop-active { border-color: #aaa; }
 
 #outer-dropzone.drop-target { 
-    box-shadow: 0px 0px 60px 15px #FFF;
+    box-shadow: 0px 0px 60px 25px #FFF;
     transition: all 0.5s;
 }
 
@@ -89,6 +90,21 @@
 .dragging.can-drop::after {
     animation: none!important;
     box-shadow: 0!important;
+}
+
+.can-drop.jackhammer-icon.dropped {
+    transition: all 0.7s!important;
+    transform: translate(137.254px, -256.148px)!important;
+}
+
+.can-drop.crowd-icon.dropped {
+    transition: all 0.7s!important;
+    transform: translate(-1.93799px, -255.425px)!important;
+}
+
+.can-drop.tractor-icon.dropped {
+    transition: all 0.7s!important;
+    transform: translate(-140.324px, -256px)!important;
 }
 
 .box-wrapper, .box-shadow-wrapper {
