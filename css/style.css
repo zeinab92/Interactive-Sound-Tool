@@ -52,6 +52,11 @@
     width: 93px;
     height: 93px;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
 }
 
 .drag-drop.crowd-icon { margin-left: 140px; }
