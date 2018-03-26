@@ -148,6 +148,7 @@ interact('.dropzone').dropzone({
         $(".ribbon-wrapper").addClass("drop");
         $(".ribbon").addClass("expand");
         $(".expand .parent-span").css("transition", "none");
+        $(".cant-drag").addClass("on");
         counter = setInterval(decrement, 8);
         setTimeout(function () {
             $(".can-drop").removeClass("dropped");
@@ -177,7 +178,8 @@ interact('.dropzone').dropzone({
             $(".parent-span").css("transition", "opacity 0.5s linear 0.5s");
             $(".ribbon.expand").removeClass("remove-expand");
             $(".ribbon.expand").removeClass("expand");
-        }, 9000);
+            $(".cant-drag").removeClass("on");
+        }, 8000);
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
