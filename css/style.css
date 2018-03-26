@@ -5,7 +5,7 @@
 
 .wrapper {
     background: url(../assets/images/Background.png);
-/*    background-size: cover;*/
+    background-size: cover;
     height: 805px;
     margin: 0 auto;
     position: relative;
@@ -70,17 +70,11 @@
     transition: all 0.2s;
 }
 
-.drag-drop.tractor-icon::after {
-    left: 4px;
-}
+.drag-drop.tractor-icon::after { left: 4px; }
 
-.drag-drop:hover::after {
-    box-shadow: 0px 0px 55px 5px #FBCD33;
-}
+.drag-drop:hover::after { box-shadow: 0px 0px 55px 5px #FBCD33; }
 
-.dragging::after {
-    animation: flash 0.4s infinite;
-}
+.dragging::after { animation: flash 0.4s infinite; }
 
 @keyframes flash {
     100% {box-shadow: 0px 0px 55px 5px #FBCD33;}
@@ -135,9 +129,7 @@
     backface-visibility: hidden;
 }
 
-.box.drop {
-    margin-top: 125%;
-}
+.box.drop { margin-top: 125%; }
 
 .box::after, .box-shadow::after {
     content: '';
@@ -214,9 +206,7 @@
     font-weight: 600;
 }
 
-.ribbon span span {
-    font-weight: 400;
-}
+.ribbon span span { font-weight: 400; }
 
 .ribbon.expand .parent-span {
     opacity: 1;
@@ -274,9 +264,7 @@
     -webkit-transition: all 0.2s linear 0.4s;
 }
 
-.ribbon-wrapper.drop {
-    top: 55%;
-}
+.ribbon-wrapper.drop { top: 55%; }
 
 .cant-drag {
     width: 100%;
@@ -287,6 +275,4 @@
     display: none;
 }
 
-.cant-drag.on {
-    display: block;
-}
+.cant-drag.on { display: block; }

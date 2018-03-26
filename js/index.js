@@ -6,17 +6,9 @@ interact('.draggable')
         onmove: window.dragMoveListener,
         // keep the element within the area of it's parent
         restrict: {
-            restriction: "parent",
-            endOnly: true,
-            elementRect: {
-                top: 0,
-                left: 0,
-                bottom: 1,
-                right: 1
-            }
+            restriction: 'parent',
+            elementRect: { left: 0, right: 1, top: 0, bottom: 1 }
         },
-        // enable autoScroll
-        autoScroll: true,
 
         // call this function on every dragmove event
         onmove: dragMoveListener,
@@ -24,7 +16,6 @@ interact('.draggable')
         onend: function (event) {
             event.target.classList.remove("dragging");
             $(".audio").trigger("pause");
-            $(".ribbon").removeClass("expand");
             
             if ($(".draggable").hasClass("can-drop")) {
                 //Don't snap icon back because it was dropped into drop zone
@@ -35,9 +26,12 @@ interact('.draggable')
                 $(".draggable").removeAttr('data-y');
                 $(".draggable").css('transform', 'none');
                 $(".draggable").css('transition', 'all 1s');
+                $(".ribbon.expand").addClass("remove-expand");
                 setTimeout(function () {
                     $(".draggable").css('transition', 'opacity 1s');
-                }, 1200);
+                    $(".ribbon.expand").removeClass("remove-expand");
+                    $(".ribbon.expand").removeClass("expand");
+                }, 1400);
             }
         }
     });
@@ -61,13 +55,13 @@ function dragMoveListener(event) {
     $(".ribbon").addClass("expand");
     target.classList.add("dragging");
     if ($(".dragging").hasClass("jackhammer-icon")) {
-        $(".parent-span").html("96.0 <span>dBA</span>")
+        $(".parent-span").html("96.0 <span>&nbsp;dBA</span>")
     }
     else if ($(".dragging").hasClass("crowd-icon")) {
-        $(".parent-span").html("110.0 <span>dBA</span>")
+        $(".parent-span").html("110.0 <span>&nbsp;dBA</span>")
     }
     else if ($(".dragging").hasClass("tractor-icon")) {
-        $(".parent-span").html("102.0 <span>dBA</span>")
+        $(".parent-span").html("102.0 <span>&nbsp;dBA</span>")
     }
 }
 
@@ -112,7 +106,7 @@ interact('.dropzone').dropzone({
             var number = 96.0;
             var decrement = function(){
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + ' <span>&nbsp;dBA</span>');
                 if (number <= 86.1){
                     clearInterval(counter);
                 }
@@ -122,7 +116,7 @@ interact('.dropzone').dropzone({
             var number = 110.0;
             var decrement = function(){
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + ' <span>&nbsp;dBA</span>');
                 if (number <= 100.1){
                     clearInterval(counter);
                 }
@@ -132,7 +126,7 @@ interact('.dropzone').dropzone({
             var number = 102.0;
             var decrement = function(){
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(1) + ' <span>dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + ' <span>&nbsp;dBA</span>');
                 if (number <= 92.1){
                     clearInterval(counter);
                 }
