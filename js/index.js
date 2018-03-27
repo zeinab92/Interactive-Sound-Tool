@@ -1,3 +1,17 @@
+if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
+    console.log("You're using Safari!");
+    $(".draggable").mousedown(function(){
+       $(this).children(".audio").trigger("play"); 
+    });
+    
+    $(".draggable").mouseup(function(){
+       $(this).children(".audio").trigger("pause"); 
+    });
+}
+else {
+    console.log("You're NOT using Safari!");
+}
+
 // target elements with the "draggable" class
 interact('.draggable')
     .draggable({
