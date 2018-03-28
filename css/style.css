@@ -139,7 +139,6 @@
     transition: all 1s;
     -webkit-transition: all 1s;
     width: 257px;
-    background-color: #4c4c4c;
     background: url(../assets/images/BOX.png);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -156,7 +155,6 @@
     position: absolute;
     transform-style: preserve-3d;
     width: 100%;
-    background-color: #969696;
     transform: rotateX(-90deg);
     transform-origin: 50% 0;
 }
@@ -199,6 +197,40 @@
 }
 
 .box-shadow.drop::after { background-color: rgba(0,0,0,0.55); }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .box::after, .box-shadow::after {
+        transform: none;
+    }
+    .box::after { 
+        background: url(../assets/images/BOX-TOP.png);
+        background-size: cover;
+        height: 37px;
+        width: 101%;
+        top: -13%;
+        left: -2px;
+    }
+    .box-shadow {
+        margin-top: 143%!important;
+    }
+    .box-shadow::after {
+        background: transparent!important;
+        border-bottom: 65px solid rgba(0,0,0,0.25);
+        border-right: 45px solid transparent;
+        border-left: 45px solid transparent;
+        width: 70%;
+        bottom: 0;
+    }
+    .box-shadow.drop {
+        background: transparent;
+        width: 12em;
+        height: 11em;
+        margin-left: 1em;
+    }
+    .box-shadow.drop::after {
+        border-bottom: 55px solid rgba(0,0,0,0.55);
+    }
+}
 
 .ribbon-wrapper {
     position: absolute;
