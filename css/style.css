@@ -48,6 +48,7 @@
     bottom: 4%;
     transform: translate(0px, 0px);
     -webkit-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
     transition: opacity 1s;
     width: 93px;
     height: 93px;
@@ -95,16 +96,19 @@
 .can-drop.jackhammer-icon.dropped {
     transition: all 0.7s!important;
     transform: translate(137.254px, -256.148px)!important;
+    -webkit-transform: translate(137.254px, -256.148px)!important;
 }
 
 .can-drop.crowd-icon.dropped {
     transition: all 0.7s!important;
     transform: translate(-1.93799px, -255.425px)!important;
+    -webkit-transform: translate(-1.93799px, -255.425px)!important;
 }
 
 .can-drop.tractor-icon.dropped {
     transition: all 0.7s!important;
     transform: translate(-140.324px, -256px)!important;
+    -webkit-transform: translate(-140.324px, -256px)!important;
 }
 
 .box-wrapper, .box-shadow-wrapper {
@@ -124,17 +128,26 @@
     margin: 50% auto 0;
     position: relative;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
     transform-origin: 50% 50% -5em;
+    -webkit-transform-origin: 50% 50% -5em;
+    -ms-transform-origin: 50% 50% -5em;
     transform: rotateX(-5deg);
+    -webkit-transform: rotateX(-5deg);
+    -ms-transform: rotateX(-5deg);
     transition: all 1s;
     -webkit-transition: all 1s;
     width: 257px;
     background-color: #4c4c4c;
     background: url(../assets/images/BOX.png);
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .box.drop { margin-top: 125%; }
+
+.safari-browser .box.drop { margin-top: 115%; }
 
 .box::after, .box-shadow::after {
     content: '';
@@ -164,6 +177,10 @@
     height: 12em;
 }
 
+.safari-browser .box-shadow {
+    margin-top: 205%;
+}
+
 .box-shadow::after {
     background-color: rgba(0,0,0,0.15);
     transition: all 1s;
@@ -171,10 +188,14 @@
 }
 
 .box-shadow.drop {
-    width: 13em;
+    width: 14em;
     height: 8em;
-    margin-left: 1.7em;
+    margin-left: 1em;
     margin-top: 206%;
+}
+
+.safari-browser .box-shadow.drop {
+    margin-top: 200%;
 }
 
 .box-shadow.drop::after { background-color: rgba(0,0,0,0.55); }
@@ -249,6 +270,8 @@
     z-index: -1;
     right: 0;
     height: 139%;
+    -webkit-transform: rotateX(45deg) rotateY(18deg) scaleX(-1);
+    -ms-transform: rotateX(45deg) rotateY(18deg) scaleX(-1);
     transform: rotateX(45deg) rotateY(18deg) scaleX(-1);
     width: 0%;
     margin-top: 7px;
@@ -267,6 +290,31 @@
     margin-top: 7px;
     transition: all 0.2s linear 0.4s;
     -webkit-transition: all 0.2s linear 0.4s;
+}
+
+/* SAFARI RIBBON FIX */
+.safari-browser .parent-span {
+    -webkit-transform: translateZ(1000px);
+}
+
+.safari-browser .ribbon::before {
+    -webkit-transform: translateZ(1000px);
+}
+
+.safari-browser .ribbon::after {
+    top: -1px;
+    height: 146%;
+    right: -9%;
+}
+
+.safari-browser .ribbon.expand::after {
+    width: 49%;
+}
+
+.safari-browser .expand.remove-expand::after {
+    margin-top: 0px;
+    transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
 }
 
 .ribbon-wrapper.drop { top: 55%; }

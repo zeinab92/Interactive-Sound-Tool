@@ -1,5 +1,5 @@
 if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
-    console.log("You're using Safari!");
+    //If Safari Browser
     $(".draggable").mousedown(function(){
        $(this).children(".audio").trigger("play"); 
     });
@@ -7,9 +7,11 @@ if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
     $(".draggable").mouseup(function(){
        $(this).children(".audio").trigger("pause"); 
     });
+    
+    $(".wrapper").addClass("safari-browser");
 }
 else {
-    console.log("You're NOT using Safari!");
+    //Do the normal audio triggering in all other browsers
 }
 
 // target elements with the "draggable" class
@@ -41,6 +43,10 @@ interact('.draggable')
                 $(".draggable").css('transform', 'none');
                 $(".draggable").css('transition', 'all 1s');
                 $(".ribbon.expand").addClass("remove-expand");
+                setTimeout(function () {
+                    $(".safari-browser .ribbon.expand").removeClass("remove-expand");
+                    $(".safari-browser .ribbon.expand").removeClass("expand");
+                }, 500);
                 setTimeout(function () {
                     $(".draggable").css('transition', 'opacity 1s');
                     $(".ribbon.expand").removeClass("remove-expand");
@@ -182,6 +188,7 @@ interact('.dropzone').dropzone({
             $(".can-drop").css("opacity", 1);
             $(".drag-drop").removeClass("can-drop");
         }, 6500);
+        
         setTimeout(function (){
             $(".parent-span").css("transition", "opacity 0.5s linear 0.5s");
             $(".ribbon.expand").removeClass("remove-expand");
