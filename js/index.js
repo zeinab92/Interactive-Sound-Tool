@@ -1,12 +1,12 @@
 if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
     //If Safari Browser
-    $(".draggable").mousedown(function(){
-       $(this).children(".audio").trigger("play"); 
-    });
-    
-    $(".draggable").mouseup(function(){
-       $(this).children(".audio").trigger("pause"); 
-    });
+   $(".draggable").on("vmousedown", function() { 
+      $(this).children(".audio").trigger("play"); 
+   });
+
+   $(".draggable").on("vmouseup", function() { 
+      $(this).children(".audio").trigger("pause"); 
+   });
     
     $(".wrapper").addClass("safari-browser");
 }
