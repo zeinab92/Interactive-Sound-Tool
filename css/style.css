@@ -11,7 +11,7 @@
     background: url(../assets/images/Background.png);
     background-size: cover;
     height: 805px;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
     width: 665px;
 }
