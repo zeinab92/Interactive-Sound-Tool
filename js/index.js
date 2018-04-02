@@ -75,13 +75,13 @@ function dragMoveListener(event) {
     $(".ribbon").addClass("expand");
     target.classList.add("dragging");
     if ($(".dragging").hasClass("jackhammer-icon")) {
-        $(".parent-span").html("96.0 <span>&nbsp;dBA</span>")
+        $(".parent-span").html("96.0<span style='margin-left:2.5px;'>dBA</span>")
     }
     else if ($(".dragging").hasClass("crowd-icon")) {
-        $(".parent-span").html("110.0 <span>&nbsp;dBA</span>")
+        $(".parent-span").html("110.0<span style='margin-left:2.5px;'>dBA</span>")
     }
     else if ($(".dragging").hasClass("tractor-icon")) {
-        $(".parent-span").html("102.0 <span>&nbsp;dBA</span>")
+        $(".parent-span").html("102.0<span style='margin-left:2.5px;'>dBA</span>")
     }
 }
 
@@ -126,7 +126,7 @@ interact('.dropzone').dropzone({
             var number = 96.0;
             var decrement = function(){
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(1) + ' <span>&nbsp;dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + '<span style="margin-left:2.5px;">dBA</span>');
                 if (number <= 86.1){
                     clearInterval(counter);
                 }
@@ -136,7 +136,7 @@ interact('.dropzone').dropzone({
             var number = 110.0;
             var decrement = function(){
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(1) + ' <span>&nbsp;dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + '<span style="margin-left:2.5px;">dBA</span>');
                 if (number <= 100.1){
                     clearInterval(counter);
                 }
@@ -146,7 +146,7 @@ interact('.dropzone').dropzone({
             var number = 102.0;
             var decrement = function(){
                 number -= 0.1;
-                $('.parent-span').html(number.toFixed(1) + ' <span>&nbsp;dBA</span>');
+                $('.parent-span').html(number.toFixed(1) + '<span style="margin-left:2.5px;">dBA</span>');
                 if (number <= 92.1){
                     clearInterval(counter);
                 }
@@ -172,7 +172,7 @@ interact('.dropzone').dropzone({
             }, 1000);
             $(".can-drop").removeAttr('data-x');
             $(".can-drop").removeAttr('data-y');
-        }, 5000);
+        }, 2500);
         setTimeout(function () {
             $(".audio").trigger("pause");
             $(".box").removeClass("drop");
@@ -182,19 +182,19 @@ interact('.dropzone').dropzone({
             $(".audio").animate({
                 volume: 1
             }, 1000);
-        }, 6000);
+        }, 3350);
         setTimeout(function () {
             $(".ribbon.expand").addClass("remove-expand");
             $(".can-drop").css("opacity", 1);
             $(".drag-drop").removeClass("can-drop");
-        }, 6500);
+        }, 3800);
         
         setTimeout(function (){
             $(".parent-span").css("transition", "opacity 0.5s linear 0.5s");
             $(".ribbon.expand").removeClass("remove-expand");
             $(".ribbon.expand").removeClass("expand");
             $(".cant-drag").removeClass("on");
-        }, 8000);
+        }, 4500);
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
