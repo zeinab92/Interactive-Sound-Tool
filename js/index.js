@@ -14,6 +14,10 @@ else {
     //Do the normal audio triggering in all other browsers
 }
 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $(".wrapper").css("display", "none");
+}
+
 // target elements with the "draggable" class
 interact('.draggable')
     .draggable({

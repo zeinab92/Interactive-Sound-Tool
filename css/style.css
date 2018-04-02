@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.no-sup-msg {
+    display: none;
+}
+
 .wrapper {
     background: url(../assets/images/Background.png);
     background-size: cover;
@@ -10,6 +14,12 @@
     margin: 0 auto;
     position: relative;
     width: 665px;
+}
+
+@media all and (max-width: 664px) {
+    .wrapper {
+        display: none;
+    }
 }
 
 .inner-wrapper {
